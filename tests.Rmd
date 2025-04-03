@@ -1,0 +1,47 @@
+
+
+```{r}
+# Load lines from a document
+route <- 'www/documents/Aquas-Min.md'
+f <- file(route, 'r')
+lines <- readLines(f)
+
+# Get vectors ready to store information
+tags <- c()
+connections <- c()
+
+for (line in lines){
+  # Find tags that follow structure '#tag'
+  tags_found <- stringr::str_extract_all(line, '#\\w+')[[1]]
+  if (!(identical(tags_found, character(0)))){
+    # If tags were found, store them
+    tags <- c(tags, tags_found)
+  }
+  
+  # Find connections that follow structure '[[connection]]
+  connections_found <- stringr::str_extract_all(line, '\\[\\[[^\\[\\]]+\\]\\]')[[1]]
+  if (!(identical(connections_found, character(0)))){
+    # If connections were found, store them
+    connections <- c(connections, connections_found)
+  }
+}
+
+# Close file
+close(f)
+```
+
+
+```{r}
+# Results
+list(
+  route = route,
+  tags = tags,
+  connections = connections
+)
+
+```
+
+```{r}
+
+```
+
