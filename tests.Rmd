@@ -1,9 +1,9 @@
-
-
 ```{r}
 # Load lines from a document
-route <- 'www/documents/Aquas-Min.md'
-f <- file(route, 'r')
+route <- 'www/documents/'
+example_document <- 'Aquas-Min.md'
+
+f <- file(paste(route, example_document, sep=''), 'r')
 lines <- readLines(f)
 
 # Get vectors ready to store information
@@ -21,27 +21,29 @@ for (line in lines){
   # Find connections that follow structure '[[connection]]
   connections_found <- stringr::str_extract_all(line, '\\[\\[[^\\[\\]]+\\]\\]')[[1]]
   if (!(identical(connections_found, character(0)))){
-    # If connections were found, store them
-    connections <- c(connections, connections_found)
+    # If connections were found, remove [ and ]
+    connections_found <- stringr::str_replace_all(
+      string = connections_found,
+      pattern = '[\\[\\]]',
+      replacement = ''
+    )
+    
+    # Store connected document route
+    connections <- c(connections, 
+                     paste(route, connections_found, '.md', sep=''))
   }
 }
 
 # Close file
 close(f)
-```
 
-
-```{r}
 # Results
 list(
-  route = route,
+  route = paste(route, example_document,sep=''),
   tags = tags,
-  connections = connections
+  connections = unique(connections) # Remove duplicates
 )
 
 ```
 
-```{r}
-
-```
 
