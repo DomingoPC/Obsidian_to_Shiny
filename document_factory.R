@@ -15,16 +15,14 @@ update_tags <- function(line, current_tags){
   return(current_tags)
 }
 
-update_connections <- function(line, current_connections, folder_route){
+update_connections <- function(line, current_connections, folder_path){
   # Connections have the format '[[words|other]]. Get all connections:
   connections_found <- stringr::str_extract_all(
     string = line,
     pattern = '\\[\\[[^\\[\\]]+\\]\\]'
   )[[1]]
   
-  print(connections_found)
-  
-  # Check if connections were found in this line
+  # Check if connections were found in this text line
   if (!identical(connections_found, character(0))){
     # Connections found -> remove '`[[' and ']]' symbols
     connections_found <- stringr::str_replace_all(
@@ -43,7 +41,7 @@ update_connections <- function(line, current_connections, folder_route){
     # Return updated connections
     return(
       c(current_connections, 
-        file.path(folder_route, paste0(connections_found, '.md')))
+        file.path(folder_path, paste0(connections_found, '.md')))
     )
   }
   
@@ -51,10 +49,23 @@ update_connections <- function(line, current_connections, folder_route){
   return(current_connections)
 }
 
-documents_metadata <- function(folder_route, output_route=folder_route){
+parse_current_line <- function(line){
+  # Remove tags
+  parsed_line <- stringr::str_replace_all(line, '#\\w+', '')
+  
+  # Remove connections
+  parsed_line <- stringr::str_replace_all(parsed_line, '\\[\\[', '') # [[
+  parsed_line <- stringr::str_replace_all(parsed_line, '(\\|.+)?\\]\\]', '') ## ]] and |...]]
+  
+  # Return parsed line
+  return(parsed_line)
+}
+
+
+documents_metadata <- function(input_path, output_path){
   # Get list of documents
-  documents <- list.files(path=folder_route, pattern='.md')
-  n_documents <- length(documents)
+  documents <- list.files(path=input_path, pattern='.md')
+  n_documents <- length(documents) # to preallocate list
   
   # Initialize output list from number of documents
   metadata <- vector(mode = "list", length = n_documents)
@@ -67,40 +78,74 @@ documents_metadata <- function(folder_route, output_route=folder_route){
     tags <- c()
     connections <- c()
     
-    # Open document with read permissions
-    route <- file.path(folder_route, document)
-    d <- file(route, 'r')
-    lines <- readLines(d, warn = F)
+    # Input: Open document with read permissions
+    no_parsed_path <- file.path(input_path, document)
+    r <- file(no_parsed_path, 'r')
+    lines <- readLines(r, warn = F)
+    
+    # Output: Open docuement with write permissions
+    parsed_path <- file.path(output_path, document)
+    w <- file(parsed_path, 'w')
     
     # Extract information line by line
     for (line in lines){
+      # --- Extract tags and connections ---
       # Find tags
       tags <- update_tags(line = line, current_tags = tags)
       
       # Find connections
       connections <- update_connections(line = line, 
                                         current_connections = connections,
-                                        folder_route = folder_route)
+                                        folder_path = output_path)
+      
+      # --- Parse document ---
+      writeLines(parse_current_line(line), w)
     }
     
-    # Close document
-    close(d)
+    # Close documents
+    close(r); close(w)
     
     # Store information in metadata list
     metadata[[idx]] <- list(
-      route = route,
+      path = parsed_path,
       tags = tags,
-      connections = connections
+      connections = unique(connections)
     )
   }
   
   return(metadata)
 }
 
+# --- Extract metadata ---
+# Documents paths
+original_documents_path <- 'documents to parse' # no yet parsed
+parsed_documents_path <- 'www/documents' # final product
+
+# Remove old files from output folder
+unlink(file.path(parsed_documents_path, '*'))
+
 # Apply function
-documents_route <- 'www/documents'
-metadata <- documents_metadata(documents_route)
+metadata <- documents_metadata(
+  input_path = original_documents_path,
+  output_path = parsed_documents_path
+)
 
 # Convert to JSON
 json_data <- jsonlite::toJSON(metadata, pretty=TRUE)
-write(json_data, paste(documents_route, 'metadata.json'))
+write(json_data, file.path(parsed_documents_path, 'metadata.json'))
+
+# --- Use metadata to get tags list ---
+tags_list <- list()
+for (data_list in metadata){
+  document_path <- data_list[['path']]
+  document_tags <- data_list[['tags']]
+  
+  for (tag in document_tags){
+    tags_list[[tag]] <- c(tags_list[[tag]], document_path)
+  }
+}
+
+# Convert to JSON
+json_tags <- jsonlite::toJSON(tags_list, pretty=T)
+write(json_tags, file.path(parsed_documents_path, 'tags.json'))
+
