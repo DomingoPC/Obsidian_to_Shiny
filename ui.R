@@ -2,12 +2,13 @@ library(shiny)
 library(shinythemes)
 library(markdown)
 library(visNetwork)
+library(shinydashboard)
 
 # Path to Obsidian documents
 doc_path = 'www/documents'
 
 # Tags list
-index <- jsonlite::fromJSON(file.path(doc_path, 'tags.json'))
+# index <- jsonlite::fromJSON(file.path(doc_path, 'tags.json'))
 
 # Document names getter
 doc_getter <- function(){
@@ -22,32 +23,41 @@ doc_getter <- function(){
 
 
 # --- Define UI ---
-ui <- navbarPage( # To support multiple pages
-  # Title and theme
-  'Magic Systems',
-  theme = shinytheme('slate'),
-  
-  # --- Notes viewer ---
-  tabPanel('Notes Viewer',
-           # Layout: document input panel (sidebar) + document viewer (main)
-           sidebarLayout(
-           
-           sidebarPanel(
-             h4('Document navigation'), # Title
-             selectInput('tag', 'Filter by Tag', choice=c('No tag', names(index))),
-             
-             selectInput('file', 'Select Document', choice=doc_getter()) # updates in server
-             ),
-           
-           mainPanel(
-             # Show selected document (doc_output from server)
-             uiOutput("doc_output"),
-             )
-           )
+ui <- dashboardPage(
+  dashboardHeader(title = 'Magic Systems'),
+  dashboardSidebar(
+    # selectInput('tag', 'Filter by Tag', choice=c('No tag', names(index))),
+    selectInput('file', 'Select Document', choice=doc_getter()), # updates in server
+    
+    # --- Pages ---
+    sidebarMenu(
+      id = 'sidebar_menu', # to observe and react
+      menuItem(h4('Visualization')),
+      menuItem("Notes", tabName = "notes", icon = icon("dashboard")),
+      menuItem("Graph View", tabName = "graph", icon = icon("th")),
+      menuItem(h4('Key Documents')),
+      menuItemOutput('dynamic_planets_menu'),
+      menuItemOutput('dynamic_species_menu'),
+      menuItemOutput('dynamic_sources_menu')
+    )
   ),
   
-  # --- Graph Viewer ---
-  tabPanel("Network",
-           visNetwork::visNetworkOutput("note_network", height = "600px")
+  
+  dashboardBody(
+    # Show items in left panel to choose from
+    tabItems(
+      # Notes Viewer
+      tabItem(tabName = 'notes',
+        fluidPage(uiOutput('doc_output'))
+      ),
+      
+      # Graph Viewer
+      tabItem(tabName = 'graph',
+              fluidPage(visNetwork::visNetworkOutput("note_network", height = "600px"))
+      )
+    ),
   )
 )
+  
+  
+  

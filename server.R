@@ -49,8 +49,49 @@ for (idx in seq_along(docs_graph)){
   }
 }
 
+# Dynamic menus
+get_submenus <- function(tag){
+  submenu_list <- list()
+  doc_names <- basename(tools::file_path_sans_ext(index[[tag]]))
+  
+  # Create submenus
+  for (name in doc_names){
+    # tabName is tag◘document
+    # ◘ (Alt+8) : to use a weird symbol as separator
+    submenu <- menuSubItem(
+      text = name,
+      tabName = paste0(tag, '◘', name)
+    )
+    
+    # Add submenu to the list
+    submenu_list <- append(submenu_list, list(submenu))
+  }
+  
+  # Return list of submenus
+  return(
+    menuItem(
+      text = tag,
+      # startExpanded = F,
+      do.call(tagList, submenu_list) # spread list as different elements
+    )
+  )
+}
+
 # --- Define Server ---
 server <- function(input, output, session) {
+  # --- Dynamic Menus ---
+  output$dynamic_planets_menu <- renderMenu({
+    get_submenus(tag = 'Planets')
+  })
+  
+  output$dynamic_species_menu <- renderMenu({
+    get_submenus(tag = 'Species')
+  })
+  
+  output$dynamic_sources_menu <- renderMenu({
+    get_submenus(tag = 'Sources')
+  })
+  
   # --- Document selection ---
   # Update document selection based on selected tag
   observeEvent(input$tag, {
@@ -69,14 +110,20 @@ server <- function(input, output, session) {
   })
   
   # Show selected document
-  output$doc_output <- renderUI({
-    req(input$file) # Get filename
+  observeEvent(input$file, {
+    # Given document path
+    file_path <- file.path(doc_path, paste0(input$file, '.md'))
     
-    # Read Markdown File
-    file_path <- paste(doc_path, '/', input$file, doc_extension, sep='')
-    content <- markdown::markdownToHTML(file_path, fragment.only = TRUE)
-    
-    HTML(content)
+    # Check if the document path leads to an actual file
+    if (file.exists(file_path)){
+      content <- markdown::markdownToHTML(file_path, fragment.only = TRUE)
+      
+      # Update UI with the content found
+      output$doc_output <- renderUI({HTML(content)})
+    } else {
+      # Show error if document not found
+      output$doc_output <- renderUI({HTML("Document not found.")})
+    }
   })
   
   # Update selected document from document links
@@ -89,6 +136,18 @@ server <- function(input, output, session) {
     updateSelectInput(session, 'file', selected = input$linked_doc_click)
   })
 
+  # Update selected document from sidebar_menu links
+  observeEvent(input$sidebar_menu, {
+    # Divide by '◘': [[1]] tag  [[2]] document
+    sidebar_menu <- stringr::str_split(input$sidebar_menu, pattern='◘')[[1]]
+    tag <- sidebar_menu[[1]]
+    
+    if (tag %in% names(index)){
+      updateSelectInput(session, 'file', selected = sidebar_menu[[2]])
+    }
+      
+    
+  })
   
   # --- Graph ---
   # Graph visualization
