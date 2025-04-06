@@ -1,49 +1,11 @@
 ```{r}
-# Load lines from a document
-route <- 'www/documents/'
-example_document <- 'Aquas-Min.md'
+line <- 'One of the species in [[Aquas-Lur]]. They are like penguins, except more intelligent, which made the connection with magic possible, in this case, with the source of [[Flow]].'
 
-f <- file(paste(route, example_document, sep=''), 'r')
-lines <- readLines(f)
-
-# Get vectors ready to store information
-tags <- c()
-connections <- c()
-
-for (line in lines){
-  # Find tags that follow structure '#tag'
-  tags_found <- stringr::str_extract_all(line, '#\\w+')[[1]]
-  if (!(identical(tags_found, character(0)))){
-    # If tags were found, store them
-    tags <- c(tags, tags_found)
-  }
-  
-  # Find connections that follow structure '[[connection]]
-  connections_found <- stringr::str_extract_all(line, '\\[\\[[^\\[\\]]+\\]\\]')[[1]]
-  if (!(identical(connections_found, character(0)))){
-    # If connections were found, remove [ and ]
-    connections_found <- stringr::str_replace_all(
-      string = connections_found,
-      pattern = '[\\[\\]]',
-      replacement = ''
-    )
-    
-    # Store connected document route
-    connections <- c(connections, 
-                     paste(route, connections_found, '.md', sep=''))
-  }
-}
-
-# Close file
-close(f)
-
-# Results
-list(
-  route = paste(route, example_document,sep=''),
-  tags = tags,
-  connections = unique(connections) # Remove duplicates
+stringr::str_replace_all(
+  string = line,
+  pattern = '\\[\\[([^\\[\\]]+)\\]\\]',
+  replacement = "<a href='#' onclick=\"Shiny.setInputValue('linked_doc_click', '\\1', {priority: 'event'})\">[[\\1]]</a>"
 )
 
 ```
-
 

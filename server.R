@@ -19,9 +19,9 @@ docs_graph <- tools::file_path_sans_ext( # No extension
   basename(unlist(metadata[['path']])) # No path
 )
 
-# # Load documents' tag
-# docs_tags <- sapply(metadata[['tags']], function(x){ ifelse(length(x)==0, 'No tag', x) })
-# docs_tags
+# Load documents' tag
+docs_tags <- sapply(metadata[['tags']], function(x){ ifelse(length(x)==0, 'No tag', x) })
+docs_tags
 
 nodes <- data.frame(
   id = seq_along(docs_graph),
@@ -38,7 +38,7 @@ for (idx in seq_along(docs_graph)){
   
   # Skip unconnected files
   if (length(linked_document_paths) != 0){
-    linked_docs <- tools::file_path_sans_ext(basename(liked_document_paths))
+    linked_docs <- tools::file_path_sans_ext(basename(linked_document_paths))
     linked_idx <- unlist(sapply(linked_docs, function(x){ nodes$id[nodes$label == x] }))
     
     for (to_id in linked_idx){
@@ -51,11 +51,12 @@ for (idx in seq_along(docs_graph)){
 
 # --- Define Server ---
 server <- function(input, output, session) {
+  # --- Document selection ---
   # Update document selection based on selected tag
   observeEvent(input$tag, {
     # Documents under selected tag
     if (input$tag == 'No tag'){
-      docs <- list.files(doc_path)
+      docs <- list.files(doc_path, pattern='.md', full.names=FALSE)
     } else {
       docs <- index[[input$tag]]
     }
@@ -78,6 +79,18 @@ server <- function(input, output, session) {
     HTML(content)
   })
   
+  # Update selected document from document links
+  # linked_doc_click  ->  manually inserted in Markdown parsing
+  observeEvent(input$linked_doc_click, {
+    # Reset tags
+    updateSelectInput(session, 'tag', selected = 'No tag')
+    
+    # Show selected document
+    updateSelectInput(session, 'file', selected = input$linked_doc_click)
+  })
+
+  
+  # --- Graph ---
   # Graph visualization
   output$note_network <- renderVisNetwork({
     visNetwork(nodes, edges) %>%

@@ -40,7 +40,8 @@ ui <- navbarPage( # To support multiple pages
              ),
            
            mainPanel(
-             uiOutput("doc_output") # Show doc_output (from server)
+             # Show selected document (doc_output from server)
+             uiOutput("doc_output"),
              )
            )
   ),

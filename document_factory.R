@@ -50,12 +50,34 @@ update_connections <- function(line, current_connections, folder_path){
 }
 
 parse_current_line <- function(line){
-  # Remove tags
+  # --- Remove tags ---
   parsed_line <- stringr::str_replace_all(line, '#\\w+', '')
   
-  # Remove connections
-  parsed_line <- stringr::str_replace_all(parsed_line, '\\[\\[', '') # [[
-  parsed_line <- stringr::str_replace_all(parsed_line, '(\\|.+)?\\]\\]', '') ## ]] and |...]]
+  # --- Change connections by hlinks ---
+  # [[document_name|display_name]] -> [[document_name]]
+  # Pattern explanation: 
+  #   · \\|         ->  starts with "|"
+  #   · [^\\[\\]]+  ->  anything that's not "[" or "]"
+  #   · \\]\\]      ->  ends with "]]"  
+  parsed_line <- stringr::str_replace_all(parsed_line, '\\|[^\\[\\]]+\\]\\]', ']]')
+  
+  # [[document_name]] -> hlink
+  # Pattern explanation:
+  #   · \\[\\[        ->  Starts with "[["
+  #   · ([^\\[\\]]+)  ->  Anything that's not "[" nor "]" (first group = '\\1')
+  #   · \\]\\]        ->  Ends with "]]"
+  #
+  # Replacement explanation:
+  #   · <a href='#'>  ->  Makes it look like a link
+  #   · '\\1'         ->  Refers to the first group found in the pattern (the document name)
+  #   · onclick="Shiny.setInputValue('linked_doc_click', '\\1')"  
+  #       ->  communicate Shiny the user wants to read the document '\\1'
+  
+  parsed_line <- stringr::str_replace_all(
+    string = parsed_line,
+    pattern = '\\[\\[([^\\[\\]]+)\\]\\]',
+    replacement = "<a href='#' class='note-link' data-id='\\1' onclick=\"Shiny.setInputValue('linked_doc_click', '\\1', {priority: 'event'}); return false;\">\\1</a>"
+  )
   
   # Return parsed line
   return(parsed_line)
