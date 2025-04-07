@@ -107,6 +107,7 @@ documents_metadata <- function(input_path, output_path){
     
     # Output: Open docuement with write permissions
     parsed_path <- file.path(output_path, document)
+    name <- basename(tools::file_path_sans_ext(parsed_path))
     w <- file(parsed_path, 'w')
     
     # Extract information line by line
@@ -130,8 +131,10 @@ documents_metadata <- function(input_path, output_path){
     # Store information in metadata list
     metadata[[idx]] <- list(
       path = parsed_path,
+      name = name,
       tags = tags,
-      connections = unique(connections)
+      connections = unique(connections),
+      connections_names = sapply(unique(connections), FUN = function(x){ basename(tools::file_path_sans_ext(x)) })
     )
   }
   
@@ -171,3 +174,73 @@ for (data_list in metadata){
 json_tags <- jsonlite::toJSON(tags_list, pretty=T)
 write(json_tags, file.path(parsed_documents_path, 'tags.json'))
 
+# --- Graph info ---
+# Get all documents (even non written, they appear only as connections)
+nodes <- data.frame(
+  id = integer(),
+  label = character(),
+  tag = character(),
+  stringsAsFactors = FALSE
+)
+
+edges <- data.frame(
+  from = integer(),
+  to = integer()
+)
+
+next_id <- 1
+for (doc in metadata){
+  # Document names
+  label <- doc$name
+  connected_labels <- doc$connections_names
+  
+  # Add the document to nodes
+  if (!(label %in% nodes$label)){
+    # Add new document to node list
+    nodes <- rbind(
+      nodes,
+      data.frame(
+        id = next_id,
+        label = label,
+        tag = ifelse(length(doc$tags) != 0, doc$tags, 'No tag')
+      )
+    )
+    
+    # Update id for next document
+    next_id <- next_id + 1
+  } else {
+    # If the document was already recorded from previous connections, update its tag
+    nodes$tag[nodes$label == label] = ifelse(length(doc$tags) != 0, doc$tags, 'No tag')
+  }
+  
+  # Process connections (if this document has any)
+  if (!(length(connected_labels) == 0)){
+    for (l in connected_labels){
+      # Add to node list before adding to edges
+      if (!(l %in% nodes$label)){
+        nodes <- rbind(
+          nodes, 
+          data.frame(
+            id = next_id,
+            label = l, 
+            tag = 'Not Written')
+        )
+        
+        # Update id for next document
+        next_id <- next_id + 1
+      }
+      
+      # Store connection
+      ids <- sapply(c(label, l), FUN = function(x){ nodes$id[nodes$label == x] })
+      edges <- rbind(edges, data.frame(from = ids[[1]], to = ids[[2]]))
+    }
+  }
+  
+  
+  
+  
+}
+
+# Save tables as csv to use in server to build the graph
+write.csv(nodes, file=file.path(parsed_documents_path, 'nodes.csv'))
+write.csv(edges, file=file.path(parsed_documents_path, 'edges.csv'))

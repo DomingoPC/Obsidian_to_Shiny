@@ -1,5 +1,5 @@
 library(shiny)
-library(shinythemes)
+# library(shinythemes)
 library(markdown)
 library(visNetwork)
 library(shinydashboard)
@@ -53,7 +53,12 @@ ui <- dashboardPage(
       
       # Graph Viewer
       tabItem(tabName = 'graph',
-              fluidPage(visNetwork::visNetworkOutput("note_network", height = "600px"))
+              fluidPage(
+                # Button to go to the clicked document
+                actionButton("goto_graph", "Go to Selected Document"),
+                
+                # The Graph
+                visNetwork::visNetworkOutput("note_network", height = "600px"))
       )
     ),
   )

@@ -11,45 +11,11 @@ doc_extension <- '.md'
 index <- jsonlite::fromJSON(file.path(doc_path, 'tags.json'))
 
 # --- Graph info ---
-# Read metadata
-metadata <- jsonlite::fromJSON(file.path(doc_path, 'metadata.json'))
+nodes <- read.csv(file.path(doc_path, 'nodes.csv'))
+edges <- read.csv(file.path(doc_path, 'edges.csv'))
+nodes$group <- nodes$tag
 
-# Load documents
-docs_graph <- tools::file_path_sans_ext( # No extension
-  basename(unlist(metadata[['path']])) # No path
-)
-
-# Load documents' tag
-docs_tags <- sapply(metadata[['tags']], function(x){ ifelse(length(x)==0, 'No tag', x) })
-docs_tags
-
-nodes <- data.frame(
-  id = seq_along(docs_graph),
-  label = docs_graph,
-  tag = docs_tags
-)
-
-# Connections
-edges <- data.frame(from = integer(), to = integer())
-
-for (idx in seq_along(docs_graph)){
-  from_id <- idx
-  linked_document_paths <- metadata[['connections']][[idx]]
-  
-  # Skip unconnected files
-  if (length(linked_document_paths) != 0){
-    linked_docs <- tools::file_path_sans_ext(basename(linked_document_paths))
-    linked_idx <- unlist(sapply(linked_docs, function(x){ nodes$id[nodes$label == x] }))
-    
-    for (to_id in linked_idx){
-      edges <- rbind(edges,
-                     data.frame(from = from_id, to = to_id, 
-                                smooth = T))
-    }
-  }
-}
-
-# Dynamic menus
+# --- Dynamic menus ---
 get_submenus <- function(tag){
   submenu_list <- list()
   doc_names <- basename(tools::file_path_sans_ext(index[[tag]]))
@@ -149,29 +115,83 @@ server <- function(input, output, session) {
     
   })
   
+  # Go to selected document from graph
+  observeEvent(input$goto_graph, {
+    node_id <- input$selected_node # selected node id
+    doc <- nodes$label[nodes$id == node_id] # corresponding document label
+    
+    # Check if it's a valid document
+    tag <- nodes$tag[nodes$label == doc]
+    
+    if (!((tag == 'Not Written') || (length(tag) == 0))){
+      # Update document selection
+      updateSelectInput(session, 'file', selected = doc)
+      
+      # Move user to notes section
+      updateTabItems(session, inputId = 'sidebar_menu', selected = 'notes')
+    }
+  })
+  
   # --- Graph ---
   # Graph visualization
   output$note_network <- renderVisNetwork({
-    visNetwork(nodes, edges) %>%
-      visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>% 
-      # visLegend(enabled = TRUE) %>% # can be dinamically deactivated
-      visOptions(selectedBy = "tag") %>%
+    visNetwork(nodes, edges, width = '100%') %>%
+      
+      # Global Nodes Parameters
       visNodes(
+        shape = 'box',
         font = list(
           size = 20,      # Text size
           color = 'black',
-          # color = "#6B403C",  # Text color
           face = "arial", # Font family (can be "arial", "courier", "times", etc.)
           align = "center"   # Text alignment ("left", "right", "center")
-        ),
-        # color = list(
-        #   background = '#ADEBB3', border = '#5FCFB6'
-        #   ),
-        shape = 'box') %>% 
+        )) %>% 
+      
+      # Modify groups
+      visGroups(groupname = 'Planets',
+                shape = 'box',
+                color = list(border = '#66A839', background = '#B0F580',
+                             highlight = list(border = "#66A839", background = "#B0F580"), 
+                             hover = list(background = "#66A839", border = "#B0F580")
+                )) %>% 
+      visGroups(groupname = 'Species',
+                shape = 'box',
+                color = list(border = 'red', background = 'pink',
+                             highlight = list(border = "red", background = "pink"), 
+                             hover = list(background = "red", border = "pink")
+                )) %>% 
+      visGroups(groupname = 'Sources',
+                shape = 'box',
+                color = list(border = '#8441F0', background = '#C8AEF2',
+                             highlight = list(border = "#8441F0", background = "#C8AEF2"), 
+                             hover = list(background = "#8441F0", border = "#C8AEF2")
+                )) %>% 
+      visGroups(groupname = 'No tag',
+                shape = 'box',
+                color = list(border = '#2B7CE9', background = '#D2E5FF',
+                             highlight = list(border = "#2B7CE9", background = "#D2E5FF"), 
+                             hover = list(background = "#2B7CE9", border = "#D2E5FF")
+                )) %>% 
+      visGroups(groupname = 'Not Written',
+                shape = 'box',
+                color = list(border = 'darkgray', background = 'lightgray',
+                             highlight = list(border = "darkgray", background = "lightgray"), 
+                             hover = list(background = "darkgray", border = "lightgray")
+                )) %>% 
+      
+      # Click on node: only closest connected nodes are shown (others lose color)
+      # Select node by id: necessary to add "Go to this document" button
+      visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
+      visEvents(select = "function(nodes) {Shiny.onInputChange('selected_node', nodes.nodes);}") %>% 
+      
+      # Legend to understand tags (node color)
+      visLegend(position = 'right') %>% 
+      
+      # Add Physics to avoid Overlapping
       visLayout(
         randomSeed = 1,  # Set a fixed random seed for reproducibility
         improvedLayout = TRUE  # Enable improved layout for better distribution
-      ) %>% 
+      ) %>%
       visPhysics(
         enabled = TRUE,              # Enable physics
         barnesHut = list(

@@ -1,72 +1,100 @@
 [
   {
     "path": ["www/documents/Aquas-Lur.md"],
+    "name": ["Aquas-Lur"],
     "tags": ["Planets"],
-    "connections": ["www/documents/Lucid Worlds.md", "www/documents/Sources.md", "www/documents/Condensation.md", "www/documents/Flow.md", "www/documents/Aquas-Min.md", "www/documents/Terras-Min.md", "www/documents/Barry Sleepwalker.md"]
+    "connections": ["www/documents/Lucid Worlds.md", "www/documents/Sources.md", "www/documents/Condensation.md", "www/documents/Flow.md", "www/documents/Aquas-Min.md", "www/documents/Terras-Min.md", "www/documents/Barry Sleepwalker.md"],
+    "connections_names": ["Lucid Worlds", "Sources", "Condensation", "Flow", "Aquas-Min", "Terras-Min", "Barry Sleepwalker"]
   },
   {
     "path": ["www/documents/Aquas-Min.md"],
+    "name": ["Aquas-Min"],
     "tags": ["Species"],
-    "connections": ["www/documents/Aquas-Lur.md", "www/documents/Flow.md", "www/documents/Manifestations.md", "www/documents/Aquas-Nar.md", "www/documents/Blue Fairy Penguins.md", "www/documents/Adelia Penguins.md", "www/documents/Macaroni Penguins.md", "www/documents/Emperor Penguins.md", "www/documents/The Sailors.md"]
+    "connections": ["www/documents/Aquas-Lur.md", "www/documents/Flow.md", "www/documents/Manifestations.md", "www/documents/Aquas-Nar.md", "www/documents/Blue Fairy Penguins.md", "www/documents/Adelia Penguins.md", "www/documents/Macaroni Penguins.md", "www/documents/Emperor Penguins.md", "www/documents/The Sailors.md"],
+    "connections_names": ["Aquas-Lur", "Flow", "Manifestations", "Aquas-Nar", "Blue Fairy Penguins", "Adelia Penguins", "Macaroni Penguins", "Emperor Penguins", "The Sailors"]
   },
   {
     "path": ["www/documents/Condensation.md"],
+    "name": ["Condensation"],
     "tags": ["Sources"],
-    "connections": {}
+    "connections": {},
+    "connections_names": []
   },
   {
     "path": ["www/documents/Ementis.md"],
+    "name": ["Ementis"],
     "tags": ["Planets"],
-    "connections": ["www/documents/Lucid Worlds.md", "www/documents/Sources.md", "www/documents/Emorion.md", "www/documents/Lekorion.md", "www/documents/Deimorion.md", "www/documents/Barry Sleepwalker.md", "www/documents/Magic Systems.md", "www/documents/Lektarf.md", "www/documents/Emtarf.md", "www/documents/Emgar.md", "www/documents/Deimtarf.md", "www/documents/Deitorium.md", "www/documents/Humans.md", "www/documents/Deitarf.md", "www/documents/Source Uniqueness.md", "www/documents/The Wall of Lights.md", "www/documents/Soulbreakers.md", "www/documents/Ementis.md"]
+    "connections": ["www/documents/Lucid Worlds.md", "www/documents/Sources.md", "www/documents/Emorion.md", "www/documents/Lekorion.md", "www/documents/Deimorion.md", "www/documents/Barry Sleepwalker.md", "www/documents/Magic Systems.md", "www/documents/Lektarf.md", "www/documents/Emtarf.md", "www/documents/Emgar.md", "www/documents/Deimtarf.md", "www/documents/Deitorium.md", "www/documents/Humans.md", "www/documents/Deitarf.md", "www/documents/Source Uniqueness.md", "www/documents/The Wall of Lights.md", "www/documents/Soulbreakers.md", "www/documents/Ementis.md"],
+    "connections_names": ["Lucid Worlds", "Sources", "Emorion", "Lekorion", "Deimorion", "Barry Sleepwalker", "Magic Systems", "Lektarf", "Emtarf", "Emgar", "Deimtarf", "Deitorium", "Humans", "Deitarf", "Source Uniqueness", "The Wall of Lights", "Soulbreakers", "Ementis"]
   },
   {
     "path": ["www/documents/Emorion.md"],
+    "name": ["Emorion"],
     "tags": ["Sources"],
-    "connections": {}
+    "connections": {},
+    "connections_names": []
   },
   {
     "path": ["www/documents/Lekorion.md"],
+    "name": ["Lekorion"],
     "tags": ["Sources"],
-    "connections": {}
+    "connections": {},
+    "connections_names": []
   },
   {
     "path": ["www/documents/Lektarf.md"],
+    "name": ["Lektarf"],
     "tags": ["Species"],
-    "connections": {}
+    "connections": {},
+    "connections_names": []
   },
   {
     "path": ["www/documents/Lucid Worlds.md"],
+    "name": ["Lucid Worlds"],
     "tags": {},
-    "connections": ["www/documents/Sources.md", "www/documents/Ementis.md", "www/documents/Aquas-Lur.md"]
+    "connections": ["www/documents/Sources.md", "www/documents/Ementis.md", "www/documents/Aquas-Lur.md"],
+    "connections_names": ["Sources", "Ementis", "Aquas-Lur"]
   },
   {
     "path": ["www/documents/Magic Systems.md"],
+    "name": ["Magic Systems"],
     "tags": {},
-    "connections": ["www/documents/Barry Sleepwalker.md", "www/documents/Sources.md", "www/documents/Manifestations.md", "www/documents/Lucid Worlds.md", "www/documents/Ementis.md", "www/documents/Aquas-Lur.md", "www/documents/Source Uniqueness.md", "www/documents/Source Permeability.md"]
+    "connections": ["www/documents/Barry Sleepwalker.md", "www/documents/Sources.md", "www/documents/Manifestations.md", "www/documents/Lucid Worlds.md", "www/documents/Ementis.md", "www/documents/Aquas-Lur.md", "www/documents/Source Uniqueness.md", "www/documents/Source Permeability.md"],
+    "connections_names": ["Barry Sleepwalker", "Sources", "Manifestations", "Lucid Worlds", "Ementis", "Aquas-Lur", "Source Uniqueness", "Source Permeability"]
   },
   {
     "path": ["www/documents/Manifestations.md"],
+    "name": ["Manifestations"],
     "tags": {},
-    "connections": {}
+    "connections": {},
+    "connections_names": []
   },
   {
     "path": ["www/documents/Soulbreakers.md"],
+    "name": ["Soulbreakers"],
     "tags": {},
-    "connections": ["www/documents/Barry Sleepwalker.md"]
+    "connections": ["www/documents/Barry Sleepwalker.md"],
+    "connections_names": ["Barry Sleepwalker"]
   },
   {
     "path": ["www/documents/Source Permeability.md"],
+    "name": ["Source Permeability"],
     "tags": {},
-    "connections": ["www/documents/Source Uniqueness.md", "www/documents/Sources.md", "www/documents/Aquas-Lur.md", "www/documents/Condensation.md", "www/documents/Flow.md"]
+    "connections": ["www/documents/Source Uniqueness.md", "www/documents/Sources.md", "www/documents/Aquas-Lur.md", "www/documents/Condensation.md", "www/documents/Flow.md"],
+    "connections_names": ["Source Uniqueness", "Sources", "Aquas-Lur", "Condensation", "Flow"]
   },
   {
     "path": ["www/documents/Source Uniqueness.md"],
+    "name": ["Source Uniqueness"],
     "tags": {},
-    "connections": ["www/documents/Sources.md", "www/documents/Lucid Worlds.md"]
+    "connections": ["www/documents/Sources.md", "www/documents/Lucid Worlds.md"],
+    "connections_names": ["Sources", "Lucid Worlds"]
   },
   {
     "path": ["www/documents/Sources.md"],
+    "name": ["Sources"],
     "tags": {},
-    "connections": {}
+    "connections": {},
+    "connections_names": []
   }
 ]
