@@ -13,7 +13,15 @@ index <- jsonlite::fromJSON(file.path(doc_path, 'tags.json'))
 # --- Graph info ---
 nodes <- read.csv(file.path(doc_path, 'nodes.csv'))
 edges <- read.csv(file.path(doc_path, 'edges.csv'))
+
+# Use the tag column to separate in groups
 nodes$group <- nodes$tag
+
+# Sort the groups to sort the legend
+custom_order <- c("Planets", "Species", "Sources", "No tag", "Not Written")
+
+nodes$group <- factor(nodes$group, levels = custom_order)
+nodes <- nodes[order(nodes$group), ]
 
 # --- Dynamic menus ---
 get_submenus <- function(tag){
@@ -57,6 +65,31 @@ server <- function(input, output, session) {
   output$dynamic_sources_menu <- renderMenu({
     get_submenus(tag = 'Sources')
   })
+  
+  # --- Download Document as PDF ---
+  # Simulate Download Button Click
+  observeEvent(input$export_pdf, {
+    # Given document path
+    file_path <- file.path(doc_path, paste0(input$file, '.md'))
+    
+    # Check if the document path leads to an actual file
+    if (file.exists(file_path)){
+      # Simulate Download Button Click
+      input$export_pdf
+    }
+  })
+  
+  # Download as PDF
+  output$export_pdf <- downloadHandler(
+    filename = function() {
+      paste0(input$file, Sys.Date(), ".html")
+    },
+    content = function(file) {
+      file_path <- file.path(doc_path, paste0(input$file, '.md'))
+      rmarkdown::render(file_path, output_format = 'html_document', output_file = file)
+    }
+  )
+  
   
   # --- Document selection ---
   # Update document selection based on selected tag

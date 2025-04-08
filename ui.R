@@ -26,15 +26,33 @@ doc_getter <- function(){
 ui <- dashboardPage(
   dashboardHeader(title = 'Magic Systems'),
   dashboardSidebar(
-    # selectInput('tag', 'Filter by Tag', choice=c('No tag', names(index))),
-    selectInput('file', 'Select Document', choice=doc_getter()), # updates in server
+    # selectInput('file', 'Select Document', choice=doc_getter()), # updates in server
+    # actionButton('Download as PDF', label = tagList(icon('download'), 'Download as PDF')),
     
     # --- Pages ---
     sidebarMenu(
       id = 'sidebar_menu', # to observe and react
+      
+      menuItem(h4('Document Selection')),
+      selectInput('file', label = NULL, choice=doc_getter()), # updates in server
+      # actionButton('export_pdf', label = tagList(icon('download'), 'Download as PDF')), # Showed Download Button
+      # downloadButton('export_pdf', label = NULL, style = ';'), # Hidden Actual Download Button (couldn't format it correctly)
+      downloadButton("export_pdf", "Download as HTML", 
+                     style = "
+                     background-color: #ffffff; color: #333333; 
+                     text-align: left;
+                     border: 1px solid #cccccc; border-radius: 4px; 
+                     padding: 6px 12px;
+                     width: calc(100% - 30px); margin-bottom: 10px;
+                     margin-left: auto; margin-right: auto;
+                     display: block;
+                     ",
+                     class = "btn-sidebar"),
+      
       menuItem(h4('Visualization')),
-      menuItem("Notes", tabName = "notes", icon = icon("dashboard")),
-      menuItem("Graph View", tabName = "graph", icon = icon("th")),
+      menuItem("Explore Notes", tabName = "notes", icon = icon("book")),
+      menuItem("Network View", tabName = "graph", icon = icon("th")),
+      
       menuItem(h4('Key Documents')),
       menuItemOutput('dynamic_planets_menu'),
       menuItemOutput('dynamic_species_menu'),
