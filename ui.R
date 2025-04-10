@@ -1,8 +1,34 @@
 library(shiny)
-# library(shinythemes)
 library(markdown)
 library(visNetwork)
 library(shinydashboard)
+
+# Theme
+library(fresh)
+
+obsidian_theme <- create_theme(
+  adminlte_color(
+    light_blue = "#3771BC",  # accent (buttons, highlights)
+    aqua = "#74c7ec",
+    green = "#a6e3a1",
+    red = "#f38ba8",
+    yellow = "#f9e2af"
+  ),
+  adminlte_sidebar(
+    dark_bg = "#111111",      # dark sidebar
+    dark_hover_bg = "#313244",# hover effect
+    dark_color = "#cdd6f4"    # text color
+  ),
+  adminlte_global(
+    content_bg = "#1e1e2e",   # main background
+    box_bg = "red",       # box background
+    # box_bg = "#313244",       # box background
+    info_box_bg = "#313244"
+  )
+)
+
+
+
 
 # Path to Obsidian documents
 doc_path = 'www/documents'
@@ -26,17 +52,17 @@ doc_getter <- function(){
 ui <- dashboardPage(
   dashboardHeader(title = 'Magic Systems'),
   dashboardSidebar(
-    # selectInput('file', 'Select Document', choice=doc_getter()), # updates in server
-    # actionButton('Download as PDF', label = tagList(icon('download'), 'Download as PDF')),
-    
     # --- Pages ---
     sidebarMenu(
       id = 'sidebar_menu', # to observe and react
       
       menuItem(h4('Document Selection')),
-      selectInput('file', label = NULL, choice=doc_getter()), # updates in server
-      # actionButton('export_pdf', label = tagList(icon('download'), 'Download as PDF')), # Showed Download Button
-      # downloadButton('export_pdf', label = NULL, style = ';'), # Hidden Actual Download Button (couldn't format it correctly)
+      # Select document to display (updates in server)
+      selectInput('file', label = NULL, 
+                  choice = doc_getter(),
+                  selected = 'Main Page'),
+      
+      # Download document on display
       downloadButton("export_pdf", "Download as HTML", 
                      style = "
                      background-color: #ffffff; color: #333333; 
@@ -60,8 +86,28 @@ ui <- dashboardPage(
     )
   ),
   
-  
   dashboardBody(
+    # dashboardthemes::shinyDashboardThemes(theme = "grey_dark"),
+    use_theme(obsidian_theme),
+    tags$style(HTML("
+    .box-body, .info-box-content, .tab-content {
+      color: #FFFFFF !important;
+    }
+    
+    select.dropdown {
+    background-color: #313244 !important;
+    color: #cdd6f4 !important;
+    border: 1px solid #45475a !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
+  }
+
+  select.dropdown option {
+    background-color: #313244 !important;
+    color: #cdd6f4 !important;
+  }
+  ")),
+    
     # Show items in left panel to choose from
     tabItems(
       # Notes Viewer

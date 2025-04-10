@@ -21,6 +21,6 @@ Verentis is a planet full of forests and jungles that regrow at an accelerated r
 
 Focusing on the geographical aspects of Verentis, we find [[The Wall of Lights]], a barrier on the planet's equator. However, it is not made of stone but rather an enormous swarm of tiny, shining 'bugs' that absorb vital energy on contact. The locals know these creatures as [[Soulbreakers]], and they are deeply connected to the ancient [[Deitarf]] presence in this world.
 
-Finally, [[Ementis]] also has a rich history to it, starting with the war between the [[Lektarf]], ruled by the [[Deitarf]], against the [[Emgar]].
+Finally, Ementis also has a rich history to it, starting with the war between the [[Lektarf]], ruled by the [[Deitarf]], against the [[Emgar]].
 
 ## Sources of Verentis

@@ -24,8 +24,8 @@
     "path": ["www/documents/Ementis.md"],
     "name": ["Ementis"],
     "tags": ["Planets"],
-    "connections": ["www/documents/Lucid Worlds.md", "www/documents/Sources.md", "www/documents/Emorion.md", "www/documents/Lekorion.md", "www/documents/Deimorion.md", "www/documents/Barry Sleepwalker.md", "www/documents/Magic Systems.md", "www/documents/Lektarf.md", "www/documents/Emtarf.md", "www/documents/Emgar.md", "www/documents/Deimtarf.md", "www/documents/Deitorium.md", "www/documents/Humans.md", "www/documents/Deitarf.md", "www/documents/Source Uniqueness.md", "www/documents/The Wall of Lights.md", "www/documents/Soulbreakers.md", "www/documents/Ementis.md"],
-    "connections_names": ["Lucid Worlds", "Sources", "Emorion", "Lekorion", "Deimorion", "Barry Sleepwalker", "Magic Systems", "Lektarf", "Emtarf", "Emgar", "Deimtarf", "Deitorium", "Humans", "Deitarf", "Source Uniqueness", "The Wall of Lights", "Soulbreakers", "Ementis"]
+    "connections": ["www/documents/Lucid Worlds.md", "www/documents/Sources.md", "www/documents/Emorion.md", "www/documents/Lekorion.md", "www/documents/Deimorion.md", "www/documents/Barry Sleepwalker.md", "www/documents/Magic Systems.md", "www/documents/Lektarf.md", "www/documents/Emtarf.md", "www/documents/Emgar.md", "www/documents/Deimtarf.md", "www/documents/Deitorium.md", "www/documents/Humans.md", "www/documents/Deitarf.md", "www/documents/Source Uniqueness.md", "www/documents/The Wall of Lights.md", "www/documents/Soulbreakers.md"],
+    "connections_names": ["Lucid Worlds", "Sources", "Emorion", "Lekorion", "Deimorion", "Barry Sleepwalker", "Magic Systems", "Lektarf", "Emtarf", "Emgar", "Deimtarf", "Deitorium", "Humans", "Deitarf", "Source Uniqueness", "The Wall of Lights", "Soulbreakers"]
   },
   {
     "path": ["www/documents/Emorion.md"],
@@ -61,6 +61,13 @@
     "tags": {},
     "connections": ["www/documents/Barry Sleepwalker.md", "www/documents/Sources.md", "www/documents/Manifestations.md", "www/documents/Lucid Worlds.md", "www/documents/Ementis.md", "www/documents/Aquas-Lur.md", "www/documents/Source Uniqueness.md", "www/documents/Source Permeability.md"],
     "connections_names": ["Barry Sleepwalker", "Sources", "Manifestations", "Lucid Worlds", "Ementis", "Aquas-Lur", "Source Uniqueness", "Source Permeability"]
+  },
+  {
+    "path": ["www/documents/Main Page.md"],
+    "name": ["Main Page"],
+    "tags": {},
+    "connections": ["www/documents/Aquas-Lur.md", "www/documents/Magic Systems.md"],
+    "connections_names": ["Aquas-Lur", "Magic Systems"]
   },
   {
     "path": ["www/documents/Manifestations.md"],
