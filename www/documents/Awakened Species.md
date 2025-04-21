@@ -1,0 +1,4 @@
+# Awakened Species
+For a planet to become a <a href='#' class='note-link' data-id='Lucid Worlds' onclick="Shiny.setInputValue('linked_doc_click', 'Lucid Worlds', {priority: 'event'}); return false;">Lucid Worlds</a>, first a species have to gain access to the <a href='#' class='note-link' data-id='Sources' onclick="Shiny.setInputValue('linked_doc_click', 'Sources', {priority: 'event'}); return false;">Sources</a>. When this happens, they are considered an **Awakened Species**.
+
+Another reason for this differentiation between species and Awakened Species, is that an Awakened Species may contain several species. For example, the <a href='#' class='note-link' data-id='Aquas-Min' onclick="Shiny.setInputValue('linked_doc_click', 'Aquas-Min', {priority: 'event'}); return false;">Aquas-Min</a> is an Awakened Species that refers to several species of penguins that gained access to the same Source.

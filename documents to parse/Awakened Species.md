@@ -1,0 +1,3 @@
+For a planet to become a [[Lucid Worlds|Lucid World]], first a species have to gain access to the [[Sources]]. When this happens, they are considered an **Awakened Species**.
+
+Another reason for this differentiation between species and Awakened Species, is that an Awakened Species may contain several species. For example, the [[Aquas-Min]] is an Awakened Species that refers to several species of penguins that gained access to the same Source.

@@ -1,5 +1,6 @@
-There is a rule in [[Sources|Source]] creation, which implies that, in the beginning, each of them is associated to a specific species of a particular [[Lucid Worlds|Lucid World]]. Furthermore, this is not limited to intelligent individuals, as there are some registered cases of animal-like creatures. 
+From studying [[Sources]] from young [[Lucid Worlds]]—the ones in which magic appeared recently—, it is concluded that in each Lucid World, each Source is associated to a specific [[Awakened Species]]—which usually includes similar species. 
 
-There are several implications to this:
-+ Creatures of the same species in different planets, may gain access to different [[Sources]].
-+ Intelligent creatures may be better suited to obtain [[Sources]], although the possibility of less-intelligent creatures not being capable of using it due to a lack of understanding cannot be discarded.
+As a corollary:
+- If two Sources appear in two different [[Awakened Species]], then the two Sources will be different. This extends to any number of [[Awakened Species]].
+- If the same species (humans, orcs, penguins...) inhabit different [[Lucid Worlds]], they may gain access to different [[Sources]].
+- The same Source can manifest in different [[Awakened Species]] only if they are from different [[Lucid Worlds]].

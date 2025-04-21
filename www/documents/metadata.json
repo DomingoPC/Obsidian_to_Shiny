@@ -3,15 +3,36 @@
     "path": ["www/documents/Aquas-Lur.md"],
     "name": ["Aquas-Lur"],
     "tags": ["Planets"],
-    "connections": ["www/documents/Lucid Worlds.md", "www/documents/Sources.md", "www/documents/Condensation.md", "www/documents/Flow.md", "www/documents/Aquas-Min.md", "www/documents/Terras-Min.md", "www/documents/Barry Sleepwalker.md"],
-    "connections_names": ["Lucid Worlds", "Sources", "Condensation", "Flow", "Aquas-Min", "Terras-Min", "Barry Sleepwalker"]
+    "connections": ["www/documents/Aquas-Min.md", "www/documents/Terras-Min.md", "www/documents/Lucid Worlds.md", "www/documents/Sources.md", "www/documents/Condensation.md", "www/documents/Flow.md", "www/documents/Awakened Species.md", "www/documents/The World Melt.md"],
+    "connections_names": ["Aquas-Min", "Terras-Min", "Lucid Worlds", "Sources", "Condensation", "Flow", "Awakened Species", "The World Melt"]
   },
   {
     "path": ["www/documents/Aquas-Min.md"],
     "name": ["Aquas-Min"],
     "tags": ["Species"],
-    "connections": ["www/documents/Aquas-Lur.md", "www/documents/Flow.md", "www/documents/Manifestations.md", "www/documents/Aquas-Nar.md", "www/documents/Blue Fairy Penguins.md", "www/documents/Adelia Penguins.md", "www/documents/Macaroni Penguins.md", "www/documents/Emperor Penguins.md", "www/documents/The Sailors.md"],
-    "connections_names": ["Aquas-Lur", "Flow", "Manifestations", "Aquas-Nar", "Blue Fairy Penguins", "Adelia Penguins", "Macaroni Penguins", "Emperor Penguins", "The Sailors"]
+    "connections": ["www/documents/Awakened Species.md", "www/documents/Aquas-Lur.md", "www/documents/Flow.md", "www/documents/Aquas-Nar.md", "www/documents/Current Holding.md", "www/documents/Blue Fairy Penguins.md", "www/documents/Mind Drift.md", "www/documents/Emperor Penguins.md", "www/documents/Devouring.md", "www/documents/Macaroni Penguins.md", "www/documents/Externalization.md", "www/documents/Adelia Penguins.md", "www/documents/The Sailors.md"],
+    "connections_names": ["Awakened Species", "Aquas-Lur", "Flow", "Aquas-Nar", "Current Holding", "Blue Fairy Penguins", "Mind Drift", "Emperor Penguins", "Devouring", "Macaroni Penguins", "Externalization", "Adelia Penguins", "The Sailors"]
+  },
+  {
+    "path": ["www/documents/Aquas-Nar.md"],
+    "name": ["Aquas-Nar"],
+    "tags": {},
+    "connections": ["www/documents/Aquas-Min.md", "www/documents/Aquas-Lur.md", "www/documents/The World Melt.md"],
+    "connections_names": ["Aquas-Min", "Aquas-Lur", "The World Melt"]
+  },
+  {
+    "path": ["www/documents/Awakened Species.md"],
+    "name": ["Awakened Species"],
+    "tags": {},
+    "connections": ["www/documents/Lucid Worlds.md", "www/documents/Sources.md", "www/documents/Aquas-Min.md"],
+    "connections_names": ["Lucid Worlds", "Sources", "Aquas-Min"]
+  },
+  {
+    "path": ["www/documents/Blue Fairy Penguins.md"],
+    "name": ["Blue Fairy Penguins"],
+    "tags": {},
+    "connections": ["www/documents/Aquas-Min.md", "www/documents/Flow.md", "www/documents/Current Holding.md"],
+    "connections_names": ["Aquas-Min", "Flow", "Current Holding"]
   },
   {
     "path": ["www/documents/Condensation.md"],
@@ -19,6 +40,20 @@
     "tags": ["Sources"],
     "connections": {},
     "connections_names": []
+  },
+  {
+    "path": ["www/documents/Current Holding.md"],
+    "name": ["Current Holding"],
+    "tags": {},
+    "connections": ["www/documents/Manifestations.md", "www/documents/Flow.md"],
+    "connections_names": ["Manifestations", "Flow"]
+  },
+  {
+    "path": ["www/documents/Devouring.md"],
+    "name": ["Devouring"],
+    "tags": {},
+    "connections": ["www/documents/Manifestations.md", "www/documents/Flow.md", "www/documents/Aquas-Nar.md", "www/documents/Aquas-Min.md"],
+    "connections_names": ["Manifestations", "Flow", "Aquas-Nar", "Aquas-Min"]
   },
   {
     "path": ["www/documents/Ementis.md"],
@@ -33,6 +68,13 @@
     "tags": ["Sources"],
     "connections": {},
     "connections_names": []
+  },
+  {
+    "path": ["www/documents/Flow.md"],
+    "name": ["Flow"],
+    "tags": ["Sources"],
+    "connections": ["www/documents/Sources.md", "www/documents/Aquas-Lur.md", "www/documents/Aquas-Min.md", "www/documents/Manifestations.md", "www/documents/Current Holding.md", "www/documents/Externalization.md", "www/documents/Mind Drift.md", "www/documents/Devouring.md"],
+    "connections_names": ["Sources", "Aquas-Lur", "Aquas-Min", "Manifestations", "Current Holding", "Externalization", "Mind Drift", "Devouring"]
   },
   {
     "path": ["www/documents/Lekorion.md"],
@@ -59,8 +101,8 @@
     "path": ["www/documents/Magic Systems.md"],
     "name": ["Magic Systems"],
     "tags": {},
-    "connections": ["www/documents/Barry Sleepwalker.md", "www/documents/Sources.md", "www/documents/Manifestations.md", "www/documents/Lucid Worlds.md", "www/documents/Ementis.md", "www/documents/Aquas-Lur.md", "www/documents/Source Uniqueness.md", "www/documents/Source Permeability.md"],
-    "connections_names": ["Barry Sleepwalker", "Sources", "Manifestations", "Lucid Worlds", "Ementis", "Aquas-Lur", "Source Uniqueness", "Source Permeability"]
+    "connections": ["www/documents/Barry Sleepwalker.md", "www/documents/Lucid Worlds.md", "www/documents/Sources.md", "www/documents/Manifestations.md", "www/documents/Source Uniqueness.md", "www/documents/Minimum Intellect Threshold.md", "www/documents/Source Permeability.md", "www/documents/Ementis.md", "www/documents/Aquas-Lur.md"],
+    "connections_names": ["Barry Sleepwalker", "Lucid Worlds", "Sources", "Manifestations", "Source Uniqueness", "Minimum Intellect Threshold", "Source Permeability", "Ementis", "Aquas-Lur"]
   },
   {
     "path": ["www/documents/Main Page.md"],
@@ -70,11 +112,11 @@
     "connections_names": ["Aquas-Lur", "Magic Systems"]
   },
   {
-    "path": ["www/documents/Manifestations.md"],
-    "name": ["Manifestations"],
+    "path": ["www/documents/Minimum Intellect Threshold.md"],
+    "name": ["Minimum Intellect Threshold"],
     "tags": {},
-    "connections": {},
-    "connections_names": []
+    "connections": ["www/documents/Sources.md", "www/documents/Emtarf.md", "www/documents/Ementis.md", "www/documents/Manifestations.md"],
+    "connections_names": ["Sources", "Emtarf", "Ementis", "Manifestations"]
   },
   {
     "path": ["www/documents/Soulbreakers.md"],
@@ -87,15 +129,15 @@
     "path": ["www/documents/Source Permeability.md"],
     "name": ["Source Permeability"],
     "tags": {},
-    "connections": ["www/documents/Source Uniqueness.md", "www/documents/Sources.md", "www/documents/Aquas-Lur.md", "www/documents/Condensation.md", "www/documents/Flow.md"],
-    "connections_names": ["Source Uniqueness", "Sources", "Aquas-Lur", "Condensation", "Flow"]
+    "connections": ["www/documents/Source Uniqueness.md", "www/documents/Sources.md", "www/documents/Lucid Worlds.md", "www/documents/Awakened Species.md", "www/documents/Manifestations.md"],
+    "connections_names": ["Source Uniqueness", "Sources", "Lucid Worlds", "Awakened Species", "Manifestations"]
   },
   {
     "path": ["www/documents/Source Uniqueness.md"],
     "name": ["Source Uniqueness"],
     "tags": {},
-    "connections": ["www/documents/Sources.md", "www/documents/Lucid Worlds.md"],
-    "connections_names": ["Sources", "Lucid Worlds"]
+    "connections": ["www/documents/Sources.md", "www/documents/Lucid Worlds.md", "www/documents/Awakened Species.md"],
+    "connections_names": ["Sources", "Lucid Worlds", "Awakened Species"]
   },
   {
     "path": ["www/documents/Sources.md"],

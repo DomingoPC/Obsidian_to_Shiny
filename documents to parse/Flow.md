@@ -1,0 +1,2 @@
+#Sources 
+Flow is one of the [[Sources]] of [[Aquas-Lur]], the one associated with the [[Aquas-Min]]. It is a Source of movement and currents, as shown in the [[Manifestations]] of [[Current Holding]] and [[Externalization]], but also of fundamental forces, proven by [[Mind Drift]] and [[Devouring]].

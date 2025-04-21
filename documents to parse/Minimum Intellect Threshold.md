@@ -1,0 +1,5 @@
+Until recently, only intelligent species had proven access to the [[Sources]], which seemed to indicate that a minimum level of intelligence was required for a Source to link with them. However, a counterpoint to this theory  is the [[Emtarf]], from [[Ementis]]. This creatures have a similar intellect to animals, but have access to one of the [[Sources]] from the planet, and, consequently, the possibility of other animals accessing the [[Sources]] is being studied.
+
+One possible explanation to why this was not noticed until now, is that animals may not be able to understand how to use [[Manifestations]], as many of them have proven to be quite convoluted. And despite this being a valid point, the history of [[Ementis]] is currently under investigation, as it shows alternative reasons for this behavior.
+
+In conclusion, it is currently accepted that only intelligent species can access the [[Sources]], while the case of [[Ementis]] is considered a special case that may have been caused by the specific situation of the planet. 
