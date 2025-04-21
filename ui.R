@@ -106,13 +106,25 @@ ui <- dashboardPage(
     background-color: #313244 !important;
     color: #cdd6f4 !important;
   }
+  
+  .pdf-style {
+        max-width: 800px;   /* A4 width is ~800px on screen */
+        margin: 0 auto;     /* centers the content */
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        line-height: 1.6;
+      }
   ")),
     
     # Show items in left panel to choose from
     tabItems(
       # Notes Viewer
       tabItem(tabName = 'notes',
-        fluidPage(uiOutput('doc_output'))
+        fluidPage(
+          div(
+            class= 'pdf-style',
+            uiOutput('doc_output'))
+        )
       ),
       
       # Graph Viewer

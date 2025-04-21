@@ -1,3 +1,4 @@
+# Main Page
 ## Introduction
 This website is a compendium of my tries at making Magic Systems, so it can be seen by my players to enrich the experience—e.g. one could be a magic expert, so this could help them role better. For the way to narrate my ideas, I was indecisive between an in-universe writer or myself (taking an outside point of view), so after some experimentation I decided on writing the info myself, while keeping some in-universe content showcased like this:
 

@@ -1,3 +1,4 @@
+# Magic Systems
 >*Magic takes different forms in different worlds. Sometimes it's born in it, yet other times comes from disasters.*
 >
 >Mythology and Methodology of Magic

@@ -1,3 +1,4 @@
+# Source Uniqueness
 There is a rule in <a href='#' class='note-link' data-id='Sources' onclick="Shiny.setInputValue('linked_doc_click', 'Sources', {priority: 'event'}); return false;">Sources</a> creation, which implies that, in the beginning, each of them is associated to a specific species of a particular <a href='#' class='note-link' data-id='Lucid Worlds' onclick="Shiny.setInputValue('linked_doc_click', 'Lucid Worlds', {priority: 'event'}); return false;">Lucid Worlds</a>. Furthermore, this is not limited to intelligent individuals, as there are some registered cases of animal-like creatures. 
 
 There are several implications to this:

@@ -110,6 +110,10 @@ documents_metadata <- function(input_path, output_path){
     name <- basename(tools::file_path_sans_ext(parsed_path))
     w <- file(parsed_path, 'w')
     
+    # The header must be the documents' name
+    header <- paste('#', name)
+    writeLines(header, w)
+    
     # Extract information line by line
     for (line in lines){
       # --- Extract tags and connections ---
