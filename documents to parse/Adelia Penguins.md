@@ -1,0 +1,3 @@
+Adelia Penguins are one of the species that compose the [[Aquas-Min]]. They are linked to the Source of [[Flow]] and, by tradition, they are taught the Manifestation of [[Mobility Enhancing]].
+
+They are average sized penguins—around 70 cm tall and 4 kg—, whose names start by either "Ping-" as is generally used, or by "Fi-", in honor of Filbiorg, the Adelia Penguin who envisioned the use of [[Mobility Enhancing]] to create an agile and efficient police force in the Whirlpool Cities.

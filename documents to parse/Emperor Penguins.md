@@ -1,0 +1,3 @@
+Emperor Penguins are one of the species that compose the [[Aquas-Min]]. They are linked to the Source of [[Flow]] and, by tradition, they are taught the Manifestation of [[Mind Drift]].
+
+They are big penguins—around 120 cm tall and 45 kg—, whose names start by either "Ping-" as is generally used, or by "Cla-", in honor of Cladameo, the Emperor Penguin who used [[Mind Drift]] to improve the domestication of walruses and narwhals.

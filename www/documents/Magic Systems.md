@@ -20,15 +20,3 @@ Despite an understanding of the basics, more complex interactions are still bein
 + <a href='#' class='note-link' data-id='Source Uniqueness' onclick="Shiny.setInputValue('linked_doc_click', 'Source Uniqueness', {priority: 'event'}); return false;">Source Uniqueness</a>
 + <a href='#' class='note-link' data-id='Minimum Intellect Threshold' onclick="Shiny.setInputValue('linked_doc_click', 'Minimum Intellect Threshold', {priority: 'event'}); return false;">Minimum Intellect Threshold</a>
 + <a href='#' class='note-link' data-id='Source Permeability' onclick="Shiny.setInputValue('linked_doc_click', 'Source Permeability', {priority: 'event'}); return false;">Source Permeability</a>
-
-
-
-
-%% ## The recipe for magic
-Magic is born from the combined effects of **life** and **gravity**. Because of that, one may find satellites, asteroids and most celestial bodies to be sterile ground for . All except for planets in which life has flourished, which I will refer to as <a href='#' class='note-link' data-id='Lucid Worlds' onclick="Shiny.setInputValue('linked_doc_click', 'Lucid Worlds', {priority: 'event'}); return false;">Lucid Worlds</a>. 
-
-In a <a href='#' class='note-link' data-id='Lucid Worlds' onclick="Shiny.setInputValue('linked_doc_click', 'Lucid Worlds', {priority: 'event'}); return false;">Lucid Worlds</a>, <a href='#' class='note-link' data-id='Sources' onclick="Shiny.setInputValue('linked_doc_click', 'Sources', {priority: 'event'}); return false;">Sources</a> become accessible to the local life forms. However, although the norm indicates that there should only be one <a href='#' class='note-link' data-id='Sources' onclick="Shiny.setInputValue('linked_doc_click', 'Sources', {priority: 'event'}); return false;">Sources</a> for a specific species, I have observed cases in which several of them can be accessed, if only one at a time.
-
-Some examples of magical planets are:
-+ <a href='#' class='note-link' data-id='Ementis' onclick="Shiny.setInputValue('linked_doc_click', 'Ementis', {priority: 'event'}); return false;">Ementis</a>: a world in which most of the animals are replaced with plant-like beings, except for the humans. There are rumors of plant-people coexisting too, but they might be extinct.
-+ <a href='#' class='note-link' data-id='Aquas-Lur' onclick="Shiny.setInputValue('linked_doc_click', 'Aquas-Lur', {priority: 'event'}); return false;">Aquas-Lur</a>: a planet covered in water almost entirely, where Aquas-Min learnt to draw the power to control the currents, wind and water alike. ((I want to add absorption too -> humans are solidifying water in the poles to recover land)). %%

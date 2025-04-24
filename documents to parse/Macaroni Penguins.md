@@ -1,0 +1,3 @@
+Macaroni Penguins are one of the species that compose the [[Aquas-Min]]. They are linked to the Source of [[Flow]] and, by tradition, they are taught the Manifestation of [[Devouring]].
+
+They are average sized penguins—around 70 cm tall and 5 kg—, whose names start by either "Ping-" as is generally used, or by "Ur-", in honor of Urbalus, the Macaroni Penguin who extrapolated the functionalities of the [[Aquas-Nar]] to create [[Devouring]].

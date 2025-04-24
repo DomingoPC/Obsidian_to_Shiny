@@ -19,15 +19,3 @@ Despite an understanding of the basics, more complex interactions are still bein
 + [[Source Uniqueness]]
 + [[Minimum Intellect Threshold]]
 + [[Source Permeability]]
-
-
-
-
-%% ## The recipe for magic
-Magic is born from the combined effects of **life** and **gravity**. Because of that, one may find satellites, asteroids and most celestial bodies to be sterile ground for . All except for planets in which life has flourished, which I will refer to as [[Lucid Worlds]]. 
-
-In a [[Lucid Worlds|Lucid World]], [[Sources]] become accessible to the local life forms. However, although the norm indicates that there should only be one [[Sources|Source]] for a specific species, I have observed cases in which several of them can be accessed, if only one at a time.
-
-Some examples of magical planets are:
-+ [[Ementis]]: a world in which most of the animals are replaced with plant-like beings, except for the humans. There are rumors of plant-people coexisting too, but they might be extinct.
-+ [[Aquas-Lur]]: a planet covered in water almost entirely, where Aquas-Min learnt to draw the power to control the currents, wind and water alike. ((I want to add absorption too -> humans are solidifying water in the poles to recover land)). %%
